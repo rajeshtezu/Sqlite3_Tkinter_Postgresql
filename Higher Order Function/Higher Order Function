@@ -105,6 +105,88 @@ A Higher Order function is a function, which is capable of doing any one of the 
     24
     
     
+# Decorator:
+------------
+-> Decorators are evolved from the concept of closures.
+-> A decorator function is a higher order function that takes a function as an argument and returns the inner 
+   function.
+-> A decorator is capable of adding extra functionality to an existing function, without altering it.
+-> The decorator function is prefixed with @ symbol and written above the function definition.
+
+    Eg:
+    @outer
+    def greet():
+       pass
+    ------------------------------------
+    Eg-1: wish is the closure function
+    def outer(func):
+        def inner():
+            print("Accessing :", 
+                      func.__name__)
+            return func()
+    
+        return inner
+    
+    def greet():
+        return 'Hello!'
+    
+    wish = outer(greet)
+    
+    wish()
+    
+    O/P:
+    Accessing : greet
+    Hello!
+    ----------------------------------------
+    Eg-2: decorating 'greet'
+    def outer(func):
+        def inner():
+            print("Accessing :", 
+                      func.__name__)
+            return func()
+    
+        return inner
+    
+    def greet():
+        return 'Hello!'
+    
+    greet = outer(greet) # decorating 'greet'
+    
+    greet()  # calling new 'greet'
+    
+    O/P:
+    Accessing : greet
+    ---------------------------------------------------------------
+    Eg-3: greet = outer(greet) expression is same as @outer
+    def outer(func):
+        def inner():
+            print("Accessing :", 
+                    func.__name__)
+            return func()
+    
+        return inner
+    
+    @outer
+    def greet():
+        return 'Hello!'
+    
+    greet()
+    
+    O/P:
+    Accessing : greet
+    ------------------------------------------------------------------
+
+
+# Descriptors:
+--------------
+-> 
+
+
+
+
+
+
+
 
 
 
