@@ -1,0 +1,113 @@
+# Higher Order Function:
+------------------------
+A Higher Order function is a function, which is capable of doing any one of the following things:
+ -> It can be functioned as a data and be assigned to a variable.
+ -> It can accept any other function as an argument.
+ -> It can return a function as its result.
+ -> The ability to build Higher order functions, allows a programmer to create Closures, which in turn are used to 
+    create Decorators.
+
+    Eg-1: Function as a Data
+    def greet():
+        return 'Hello Everyone!'
+    
+    print(greet())
+    wish = greet        # 'greet' function assigned to variable 'wish'
+    print(type(wish))   
+    print(wish())
+
+    O/P:
+    Hello Everyone!
+    <type 'function'>
+    Hello Everyone!
+    --------------------------------------------------------------------
+
+    Eg-2: Function as an Argument
+    def add(x, y):
+    return x + y
+
+    def sub(x, y):
+        return x - y
+    
+    def prod(x, y):
+        return x * y
+    
+    def do(func, x, y):
+        return func(x, y)
+    
+    print(do(add, 12, 4))  # 'add' as arg
+    print(do(sub, 12, 4))  # 'sub' as arg
+    print(do(prod, 12, 4)  # 'prod' as arg
+
+    O/P:
+    16
+    8
+    48
+    -----------------------------------------------------------
+
+    Eg-3_1: Returning a Function
+    def outer():
+    def inner():
+        s = 'Hello world!'
+        return s            
+
+        return inner()    
+
+    print(outer())
+
+    O/P:
+    Hello world!
+
+    ---------------------------------------------------------------
+    
+    Eg-3_2: Returning a Function
+    def outer():
+        def inner():
+            s = 'Hello world!'
+            return s            
+    
+        return inner   # Removed '()' to return 'inner' function itself
+    
+    print(outer()) #returns 'inner' function
+    func = outer() 
+    print(type(func))
+    print(func()) # calling 'inner' function
+
+    O/P:
+    <function inner at 0xxxxxx>
+    <type 'function'>
+    Hello world!
+
+    -----------------------------------------------------------------------------
+
+
+# Closures:
+-----------
+-> A Closure is a function returned by a higher order function, whose return value depends on the data associated 
+   with the higher order function.
+
+    Eg:
+    def multiple_of(x):
+
+        def multiple(y):
+            return x*y
+    
+        return multiple
+    
+    c1 = multiple_of(5)  # 'c1' is a closure
+    c2 = multiple_of(6)  # 'c2' is a closure
+    
+    print(c1(4))
+    print(c2(4))
+    
+    O/P:
+    20
+    24
+    
+    
+
+
+
+
+
+
