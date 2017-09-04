@@ -47,12 +47,12 @@ A Higher Order function is a function, which is capable of doing any one of the 
 
     Eg-3_1: Returning a Function
     def outer():
-    def inner():
-        s = 'Hello world!'
-        return s            
-
+        def inner():
+            s = 'Hello world!'
+            return s            
+    
         return inner()    
-
+    
     print(outer())
 
     O/P:
@@ -121,8 +121,7 @@ A Higher Order function is a function, which is capable of doing any one of the 
     Eg-1: wish is the closure function
     def outer(func):
         def inner():
-            print("Accessing :", 
-                      func.__name__)
+            print("Accessing :", func.__name__)
             return func()
     
         return inner
@@ -141,8 +140,7 @@ A Higher Order function is a function, which is capable of doing any one of the 
     Eg-2: decorating 'greet'
     def outer(func):
         def inner():
-            print("Accessing :", 
-                      func.__name__)
+            print("Accessing :", func.__name__)
             return func()
     
         return inner
@@ -160,8 +158,7 @@ A Higher Order function is a function, which is capable of doing any one of the 
     Eg-3: greet = outer(greet) expression is same as @outer
     def outer(func):
         def inner():
-            print("Accessing :", 
-                    func.__name__)
+            print("Accessing :", func.__name__)
             return func()
     
         return inner
@@ -185,21 +182,18 @@ A Higher Order function is a function, which is capable of doing any one of the 
    losing their protection.
 -> This is achieved by defining a descriptor class, that implements any of __get__, __set__, __delete__ methods.
 
-    Eg-1:
+    Eg:
     class EmpNameDescriptor:
-
         def __get__(self, obj, owner):
             return self.__empname
 
         def __set__(self, obj, value):
-            if not isinstance(value, str):      -----> It checks if the value of empname attribute is a string or not.
+            if not isinstance(value, str):  -----> It checks if the value of empname attribute is a string or not.
                 raise TypeError("'empname' must be a string.")
             self.__empname = value
 
 
-    Eg-2:
     class EmpIdDescriptor:
-
         def __get__(self, obj, owner):
             return self.__empid
     
@@ -211,9 +205,7 @@ A Higher Order function is a function, which is capable of doing any one of the 
             self.__empid = value
 
 
-    Eg-3:
     class Employee:
-
         empid = EmpIdDescriptor()           
         empname = EmpNameDescriptor()       
     
@@ -222,7 +214,6 @@ A Higher Order function is a function, which is capable of doing any one of the 
             self.empname = emp_name
 
 
-    Eg-4:
     e1 = Employee(123456, 'John')
     print(e1.empid, '-', e1.empname)  
     
