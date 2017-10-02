@@ -377,6 +377,10 @@ A Higher Order function is a function, which is capable of doing any one of the 
     c1 = Circle(3.5)
     c2 = Circle(5.2)
     c3 = Circle(4.8)
+    
+    print(c1.getCirclesCount())     # -> 3
+    print(c2.getCirclesCount())     # -> 3
+    print(Circle.getCirclesCount()) # -> 3
 
 
 
